@@ -1,8 +1,11 @@
 // Importera npm-paket och moduler
+// Allmänna inställningar
 const express = require('express')
 const app = express()
 const PORT = 1177
 const tools = require('./routes/tools.js')
+const fruits = require('./routes/fruits')
+
 
 // Middleware
 // Parse request body
@@ -14,11 +17,14 @@ app.use( (req, res, next) => {
 	next()
 })
 
+// Serve static files in this folder
 app.use( express.static('public') )
+
 
 
 // Routes
 app.use('/tools', tools)  // tools är egentligen en Router middleware
+app.use('/fruits', fruits)
 
 
 // Starta server
