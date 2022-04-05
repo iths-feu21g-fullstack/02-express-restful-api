@@ -13,7 +13,7 @@ app.use( express.urlencoded({ extended: true }) )
 
 // Logger - skriv ut information om inkommande request
 app.use( (req, res, next) => {
-	console.log(`${req.method}  ${req.url} `, req.body)
+	console.log(`Logger: ${req.method}  ${req.url} `, req.body)
 	next()
 })
 

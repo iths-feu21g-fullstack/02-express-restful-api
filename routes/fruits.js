@@ -39,4 +39,22 @@ router.get('/', (req, res) => {
 
 // 5d* Om index är för högt ska servern skicka ett slumpvis valt element i arrayen, i stället för en felkod.
 
+
+
+
+// 6 Lägg till en POST route för /fruits. En ny frukt ska skickas i request body. (req.body) Testa med Insomnia eller Postman.
+router.post('/', (req, res) => {
+	let maybeFruit = req.body.fruit
+	if( maybeFruit === undefined ) {
+		res.sendStatus(400)  // bad request - dåligt utformat
+		return
+	}
+
+	// lägg till
+	fruits.push(maybeFruit)
+	res.sendStatus(201)  // 200 går också bra
+})
+
+
+
 module.exports = router
