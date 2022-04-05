@@ -1,13 +1,19 @@
 // Importera npm-paket och moduler
 // Allmänna inställningar
 const express = require('express')
+const cors = require('cors')
+const path = require('path')
 const app = express()
 const PORT = 1177
 const tools = require('./routes/tools.js')
-const fruits = require('./routes/fruits')
+const fruits = require('./routes/fruits')  // .js är valfritt
+const staticFolder = path.join(__dirname, 'public')
 
 
 // Middleware
+// CORS öppnar vårt projekt så det kan användas från andra domäner
+app.use( cors() )
+
 // Parse request body
 app.use( express.urlencoded({ extended: true }) )
 
@@ -18,7 +24,7 @@ app.use( (req, res, next) => {
 })
 
 // Serve static files in this folder
-app.use( express.static('public') )
+app.use( express.static(staticFolder) )
 
 
 
